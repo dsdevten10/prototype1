@@ -2,7 +2,7 @@ GIT
 ## SIAMO NEL BRANCH 2 
 BRANCH 2 CREAZIONE DEL DATABASE SU AZURE 
 
-rl 
+
 -------------------
 
 
@@ -75,6 +75,21 @@ import workerSrc from "pdfjs-dist/build/pdf.worker.min?url";
 - perche ho usato la forma piu complessa con parametri? per non rischiare sql injections
 
 
+## 6 
+- creato 3 file JSON diversi all interno del container , file v1 , v2, v3 tutti con id differenti ma title1 identico 
+## error importante che ho risolto 
+## UNIQUE KEY = NO add /title >> lascia libera 
+- non mi permetteva di creare un new item , new foglio JSON all interno del container perche avevo settato il container con UNIQUE KEY  title 
+- ogni oggetto doveva avere un title unico , ma poi che tutti avevano lo stesso title1 non mi permetteva di aggiungere 
+
+
+## fetching the last version only 
+1. molto importante la soluzione all errore che non mi permetteva di creare altri JSON all interno dello stesso contenitore UNIQUE KEY vuota 
+2. frontend logic - react controller api fetching the full project 
+3. .sort() ho creato una logica che mi ha permesso di metter i file nella versione corretta. 
+# conclusion: filtered data by title and by version >> rendering only the last pdf uploaded 
+- MCV model controller view , dove il model sarebbe il contenirore delle variabili 
+
 ## ERRORS SOLVED -----------------------------
 ## A. Fix CORS PDF
 - PDF blocked by CORS, PNG worked. - Blob container didn’t allow cross-origin access.
@@ -84,3 +99,9 @@ import workerSrc from "pdfjs-dist/build/pdf.worker.min?url";
 
 ## COSE IMPORTANTI DA SAPERE 
 id non si puo eliminare e obbligatoria 
+
+
+-----------------------------------------------
+
+prototype n2 
+evoluzione in base a quello che vuole Piotr
