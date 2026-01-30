@@ -105,3 +105,6 @@ id non si puo eliminare e obbligatoria
 
 prototype n2 
 evoluzione in base a quello che vuole Piotr
+
+adesso quello che voglio fare semplicemente e pushare dal mio local direttamente a origin remote della repository creata dall altro mio github account 
+
