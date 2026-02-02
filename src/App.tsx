@@ -1,13 +1,13 @@
 import "./App.css";
 import Box from "./components/Box";
 import FetchingTitleComp from "./components/FetchingTitleComp";
+import "./components/NewLoadingSpinner/loading.css";
 
 function App() {
   return (
     <>
-    <Box/>
-      <h1 className="text-3xl font-bold underline text-red-50">Vite + React</h1>
-      <FetchingTitleComp/>
+      <Box />
+      <FetchingTitleComp />
     </>
   );
 }

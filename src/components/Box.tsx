@@ -2,29 +2,30 @@ import { useEffect, useState } from "react";
 import { fetchDocumentByTitle } from "../api/apiClient";
 import { Document, Page, pdfjs } from "react-pdf";
 import workerSrc from "pdfjs-dist/build/pdf.worker.min?url";
+import NewLoadingSpinner from "./NewLoadingSpinner/NewLoadingSpinner";
 
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 // typescript definiamo il tipo di dati molto importante 
 interface DocumentData {
-  id: string; 
+  id: string;
   title: string;
   description: string;
-  version: string; 
+  version: string;
   pdf_url: string;
-  blob_url?: string; 
+  blob_url?: string;
 }
 export default function Box() {
   // MODEL:------ stato che tiene i dati 
   const [docs, setDocs] = useState<DocumentData[]>([]); // stato per salvare i documenti
-// stati per la gestione del pdf 
+  // stati per la gestione del pdf 
   const [numPages, setNumPages] = useState<{ [id: string]: number }>({}); // salva numPages per ogni documento
   const [currentPage, setCurrentPage] = useState<{ [id: string]: number }>({});
 
   // callback quando il pdf è caricato
-function onDocumentLoadSuccess(docId: string, { numPages }: { numPages: number }) {
+  function onDocumentLoadSuccess(docId: string, { numPages }: { numPages: number }) {
     setNumPages((prev) => ({ ...prev, [docId]: numPages }));
-    setCurrentPage((prev) => ({ ...prev, [docId]: 1 })); 
+    setCurrentPage((prev) => ({ ...prev, [docId]: 1 }));
   }
 
   //CONTROLLER: la logica che gira quando monti il componente 
@@ -36,27 +37,27 @@ function onDocumentLoadSuccess(docId: string, { numPages }: { numPages: number }
 
         console.log("Items trovati:", rawItems);
         // Logica di ordinamento 
-if (rawItems.length > 0) {
-// A. Ordiniamo (V3 > V2 > V1) usando numeric: true
-const sortedItems = rawItems.sort((a: any, b: any) =>
-b.version.localeCompare(a.version, undefined, { numeric: true })
-);
+        if (rawItems.length > 0) {
+          // A. Ordiniamo (V3 > V2 > V1) usando numeric: true
+          const sortedItems = rawItems.sort((a: any, b: any) =>
+            b.version.localeCompare(a.version, undefined, { numeric: true })
+          );
 
-// B. Selezioniamo il vincitore (il primo della lista)
+          // B. Selezioniamo il vincitore (il primo della lista)
 
-const latestVersion = sortedItems[0];          
-console.log("Visualizzo la versione:", latestVersion.version);
-       // C. Aggiorniamo lo stato con UN SOLO elemento
-setDocs([latestVersion]);
-} else {
-  setDocs([]); // Nessun dato trovato
-}
-} catch (error) {
-  console.error("Errore fetch documenti:", error);
-  }
-  };
-loadDocs();
-}, []);
+          const latestVersion = sortedItems[0];
+          console.log("Visualizzo la versione:", latestVersion.version);
+          // C. Aggiorniamo lo stato con UN SOLO elemento
+          setDocs([latestVersion]);
+        } else {
+          setDocs([]); // Nessun dato trovato
+        }
+      } catch (error) {
+        console.error("Errore fetch documenti:", error);
+      }
+    };
+    loadDocs();
+  }, []);
 
   // navigazione tra le pagine del pdf ----- rimangono uguali 
   const goNext = (docId: string) => {
@@ -83,7 +84,10 @@ loadDocs();
     <div className="p-4">
       <h2 className="text-xl font-bold mb-3">Documenti dal DB</h2>
       {docs.length === 0 ? (
-        <p>Caricamento dati...</p>
+        <div className="flex justify-center items-center h-48">
+          <NewLoadingSpinner color="blue" size="large" />
+        </div>
+
       ) : (
         docs.map((doc) => (
           <div

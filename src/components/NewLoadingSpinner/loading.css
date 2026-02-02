@@ -1,0 +1,27 @@
+.loadingspinner{
+    width: var(--loading-spinner-size);
+    height: var(--loading-spinner-size);
+    border: calc(var(--loading-spinner-size)/5) solid gray;
+    border-top-color: blue;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+.loading-spinner--small{
+    --loading-spinner-size: 25px; 
+}
+.loading-spinner--medium{
+       --loading-spinner-size: 50px; 
+}
+.loading-spinner--large{
+       --loading-spinner-size: 75px; 
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}

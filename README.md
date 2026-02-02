@@ -1,6 +1,10 @@
 GIT 
-## SIAMO NEL BRANCH 2 
+## SIAMO NEL BRANCH 3 feture3-experiments 
+
+
+## done
 BRANCH 2 CREAZIONE DEL DATABASE SU AZURE 
+git clone to my other github account 
 
 
 -------------------
@@ -108,3 +112,14 @@ evoluzione in base a quello che vuole Piotr
 
 adesso quello che voglio fare semplicemente e pushare dal mio local direttamente a origin remote della repository creata dall altro mio github account 
 
+alla fine ho creato un nuovo git branch feature3-experiments 
+- so from now I am working on it here 
+
+
+# interessante 
+- div all itnerno di jsx puo essere scritto anche solo con <div className="classecss"/>
+
+## ERRORS SOLVED 
+## cose importanti da sapere 
+## TO DO IN THE future 
+- in questo computer voglio creare uno snipped rfc che mi permette di creare in automatico un components react 
