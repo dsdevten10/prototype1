@@ -13,10 +13,14 @@
     "@azure/cosmos": "^4.9.0",
     "@react-pdf/renderer": "^4.3.2",
     "@tailwindcss/vite": "^4.1.18",
+    "link": "^2.1.2",
+    "lucide-react": "^0.563.0",
     "pdfjs-dist": "^5.4.296",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-pdf": "^10.3.0",
+    "react-router-dom": "^7.13.0",
+    "routes": "^2.1.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

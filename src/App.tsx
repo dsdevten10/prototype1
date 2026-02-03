@@ -1,13 +1,17 @@
 import "./App.css";
-import Box from "./components/Box";
-import FetchingTitleComp from "./components/FetchingTitleComp";
+
 import "./components/NewLoadingSpinner/loading.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Documents from "./pages/Documents";
 
 function App() {
   return (
     <>
-      <Box />
-      <FetchingTitleComp />
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/Documents" element={<Documents/>}/>
+      </Routes>
     </>
   );
 }

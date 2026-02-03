@@ -1,14 +1,29 @@
 GIT 
 ## SIAMO NEL BRANCH 3 feture3-experiments 
+perfetto ora ho pullato e posso finalmente lavorare su questo 
 
 
 ## done
 BRANCH 2 CREAZIONE DEL DATABASE SU AZURE 
 git clone to my other github account 
 
+## to do next ?? 
 
--------------------
 
+
+-----------------------------------------------------------------------------------------------
+
+# interessante 
+- div all itnerno di jsx puo essere scritto anche solo con <div className="classecss"/>
+
+## ERRORS SOLVED 
+## cose importanti da sapere 
+## TO DO IN THE future 
+- in questo computer voglio creare uno snipped rfc che mi permette di creare in automatico un components react 
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+## START
 
 ## 1 preparazione ambiente 
 # 1.1 creazione progetto typescript react tailwind 
@@ -107,7 +122,8 @@ id non si puo eliminare e obbligatoria
 
 -----------------------------------------------
 
-prototype n2 
+## prototype n2  ==================================================================================================================
+DA QUA VOGLIO REALMENTE METTERE MANO ALL APP PERO PRIMA DEVO COMPLETARE QUELLO RICHIESTO DA PIOTR
 evoluzione in base a quello che vuole Piotr
 
 adesso quello che voglio fare semplicemente e pushare dal mio local direttamente a origin remote della repository creata dall altro mio github account 
@@ -116,10 +132,22 @@ alla fine ho creato un nuovo git branch feature3-experiments
 - so from now I am working on it here 
 
 
-# interessante 
-- div all itnerno di jsx puo essere scritto anche solo con <div className="classecss"/>
+## =============================================================================================================================
+monday 2 Feb 
+a. creo un file json  Master hardcoded , title come collante , array files 
+b. Modifico il controller backend apiClient.ts , in verita ho modificato il (Box.ts)
+>> il componente mostra i dati generali solo una volta e si concentra sull ultimo caricato 
 
-## ERRORS SOLVED 
-## cose importanti da sapere 
-## TO DO IN THE future 
-- in questo computer voglio creare uno snipped rfc che mi permette di creare in automatico un components react 
+c. creare una logica di upload 
+che mi permette una volta fatto l upload di caricare il pdf direttamente nel blob storage 
+voglio ricreare perfettamente 
+se avviene upload in base al titolo e lo stesso voglio fareun update nel file esistente 
+
+
+1. react router dom : mi permette di creare delle routes ogni pagina relativa ad un particolare address url path 
+2. npm install lucide-react: icons took from a library 
+## error solved cors 
+3. blobcontainerimage: allowed methods not only GET but also POST etc
+
+
+
