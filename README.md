@@ -149,5 +149,21 @@ se avviene upload in base al titolo e lo stesso voglio fareun update nel file es
 ## error solved cors 
 3. blobcontainerimage: allowed methods not only GET but also POST etc
 
+## =====================================================================================
+## created git branch feature4-upload-pdf
+- importante e lo url del blob storage 
+## obbiettivo 
+
+sto lavorando nel branch nuovo , ovviamente quello che voglio creare lo creo in base all 
+EPIC 
+features 
+User stories 
+Task 
+
+ho creare una struttura su note che mi permette di lavorare in maniera piu veloce e autonoma da domani in poi perche essenzialmente quello che stavo facendo era ogni giorno perdere tempo in questa maniera , e non me lo posso assolutamente permettere , prima di chiedere ferie voglio assolutmanet riuscire a 
+1. CREARE LA REQUIREMENT CHE MI HA CHIESTO PIOTR 
+2. CREARE L APP 
+3. Creiamo il form >> prima i tipi poi il form che tipo di dato e perche? 
+- types.ts , useState<FormData> ("") vuoto per tutti i campi , handleChange , e.preventDefault() , dinamicamente gli input Object.keys(formData.document), Tailwind , JSX in sezioni , testing in console 
 
 
