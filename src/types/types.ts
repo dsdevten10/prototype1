@@ -1,3 +1,6 @@
+// non mescolare i tipi con la logica
+//
+
 export interface DocumentMetadata {
   title: string;
   project_name: string;
@@ -17,6 +20,9 @@ export interface FileMetadata {
   version: string;
   status: string;
   author: string;
+  url?: string; // futuro
+  file_name?: string; // futuro
+  file_type?: string; // futuro
 }
 
 export interface FormData {

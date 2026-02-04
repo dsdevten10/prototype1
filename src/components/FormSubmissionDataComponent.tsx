@@ -1,5 +1,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { FormData } from "../types/types";
+import { createItem } from "../utils/cosmoDBConfiguration";
+
+
 
 export default function FormSubmissionDataComponent() {
   const [formData, setFormData] = useState<FormData>({
@@ -24,6 +27,19 @@ export default function FormSubmissionDataComponent() {
     },
   });
 
+
+  // aggiungiamo optional Validation 
+
+  // vogliamo una validazione al form quindi se il formadata non ha un title rendimi mi devi rendere un title obbligatorio 
+  // un altra validazione del form se non c e id rendimi ID obbligatorio !! 
+
+  const validateForm = () => {
+    if(!formData.document.title) return "Titolo documento obbligatorio";
+    if(!formData.file.document_id) return "Document ID obbligatorio";
+
+    return null; 
+  }
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement>,
     section: "document" | "file"
@@ -38,16 +54,42 @@ export default function FormSubmissionDataComponent() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("FORM DATA:", formData);
-    alert("Form inviato! Controlla la console.");
-  };
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const validationError = validateForm();
+  if(validationError) {
+    alert(validationError); 
+    return; 
+  }
+
+  try {
+    // costruisci l'item come da step 2
+    // aggiunta futura logica per URL file se UploadPDF aggiorna stato 
+    const item = {
+      id: crypto.randomUUID(),
+      document: formData.document,
+      file: {
+        ...formData.file,
+      //  url: import.meta.env.VITE_BLOB_URL + "/" + formData.file.file_name,
+        created_on: new Date().toISOString(),
+        modified_on: new Date().toISOString(),
+      },
+    };
+
+    const result = await createItem(item); // funzione chiave che permette di creare l item
+    console.log("Item creato:", result);
+    alert("Item creato con successo!");
+  } catch (err) {
+    console.error(err);
+    alert("Errore durante la creazione dell'item!");
+  }
+};
 
   const documentFields = Object.keys(formData.document);
   const fileFields = Object.keys(formData.file);
 
-  return (
+   return (
     <form
       onSubmit={handleSubmit}
       className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-8"
@@ -95,7 +137,7 @@ export default function FormSubmissionDataComponent() {
       <div className="flex justify-end mt-6">
         <button
           type="submit"
-          className="bg-blue-600  font-semibold px-6 py-2 rounded-md shadow hover:bg-blue-700 transition-colors"
+          className="bg-blue-600 font-semibold px-6 py-2 rounded-md shadow hover:bg-blue-700 transition-colors"
         >
           Submit Metadata
         </button>

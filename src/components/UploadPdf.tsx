@@ -2,23 +2,30 @@ import { Upload } from "lucide-react";
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 
-export default function UploadPdf() {
+interface UploadPdfProps {
+  onUploadSuccess?: (url: string, fileName: string) => void;
+}
+
+export default function UploadPdf({ onUploadSuccess }: UploadPdfProps) {
   // stato per il file selezionato
   const [file, setFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false); // stato per disabilitare bottone durante upload
 
-  // funzione chiamata al cambio dell input file
+  // Cambio del file input
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(e.target.files[0]);
     }
   };
 
-  // funzione per fare l upload su Azure Blob
+  // Upload su Azure Blob Storage
   const handleUpload = async () => {
     if (!file) {
-      alert("Selezione prima il pdf");
+      alert("Seleziona prima un PDF");
       return;
     }
+
+    setUploading(true); // inizio upload
 
     try {
       // Costruisco URL completo: container + file name + SAS token
@@ -36,21 +43,27 @@ export default function UploadPdf() {
       if (response.ok) {
         alert("Upload completato con successo!");
         setFile(null); // reset file dopo upload
+
+        // ✅ chiama callback con URL e fileName
+        if (onUploadSuccess) {
+          const uploadedUrl = `${import.meta.env.VITE_BLOB_URL}/${file.name}`;
+          onUploadSuccess(uploadedUrl, file.name);
+        }
       } else {
         const errorText = await response.text();
-        console.error(errorText);
-        alert("Errore durante l upload");
+        console.error("Errore upload Blob:", errorText);
+        alert("Errore durante l'upload del PDF");
       }
     } catch (error) {
-      console.error(error);
-      alert("Errore durante l upload");
+      console.error("Errore upload:", error);
+      alert("Errore durante l'upload del PDF");
+    } finally {
+      setUploading(false);
     }
   };
 
   return (
     <div className="border-2 rounded-xl p-4">
-      {/* Upload PDF component */}
-
       <p className="font-bold text-lg mb-3">Document Register</p>
 
       {/* Input file */}
@@ -63,14 +76,20 @@ export default function UploadPdf() {
 
       {/* Button upload */}
       <button
-        className="text-blue-600 px-4 py-2 rounded-lg hover:bg-cyan-600 inline-flex items-center"
+        className={`text-white bg-blue-600 px-4 py-2 rounded-lg inline-flex items-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50`}
         onClick={handleUpload}
+        disabled={uploading} // disabilita durante upload
       >
-        <Upload className="ml-2 w-5 h-5" />
-        Upload PDF
+        <Upload className="w-5 h-5" />
+        {uploading ? "Uploading..." : "Upload PDF"}
       </button>
-            {file && <p className="mt-2 text-sm text-gray-500">File selezionato: {file.name}</p>}
 
+      {/* Mostra file selezionato */}
+      {file && (
+        <p className="mt-2 text-sm text-gray-500">
+          File selezionato: {file.name}
+        </p>
+      )}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 // FUNZIONI FETCHE GENERICHE DAL SERVER AZURE
+// VOLENDO POSSO METTERE AXIOS SE NECESSARIO
 
 import { getContainer } from "../utils/cosmoDBConfiguration";
 

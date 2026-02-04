@@ -165,5 +165,10 @@ ho creare una struttura su note che mi permette di lavorare in maniera piu veloc
 2. CREARE L APP 
 3. Creiamo il form >> prima i tipi poi il form che tipo di dato e perche? 
 - types.ts , useState<FormData> ("") vuoto per tutti i campi , handleChange , e.preventDefault() , dinamicamente gli input Object.keys(formData.document), Tailwind , JSX in sezioni , testing in console 
+## As Dev I want to... connect form to the database cosmoDB sending and storing all the metadata 
+
+SICUREZZA INVIO DATI 
+a. usiamo serverless function .env non vogliamo una fuga di dati 
+b. aggiungiamo su Form Submission un aggiunta di optional validatio 
 
 
