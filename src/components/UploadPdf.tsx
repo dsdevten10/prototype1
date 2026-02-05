@@ -40,6 +40,9 @@ export default function UploadPdf({ onUploadSuccess }: UploadPdfProps) {
         body: file,
       });
 
+      // RICEZIONE DELLO URL DAL FILE BLOB Creato ?? ===============================================
+      // Come passo il dato url direttamente al component formSubmission? 
+      // >> passo il dato al component Submission? 
       if (response.ok) {
         alert("Upload completato con successo!");
         setFile(null); // reset file dopo upload
@@ -76,7 +79,7 @@ export default function UploadPdf({ onUploadSuccess }: UploadPdfProps) {
 
       {/* Button upload */}
       <button
-        className={`text-white bg-blue-600 px-4 py-2 rounded-lg inline-flex items-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50`}
+        className={`text-red bg-blue-600 px-4 py-2 rounded-lg inline-flex items-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50`}
         onClick={handleUpload}
         disabled={uploading} // disabilita durante upload
       >

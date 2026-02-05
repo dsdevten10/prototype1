@@ -1,5 +1,6 @@
 // non mescolare i tipi con la logica
 //
+// devo creare anche url >> come puoi vedere url l avevo gia creato quindi riesco a tipizzarlo in questo file 
 
 export interface DocumentMetadata {
   title: string;

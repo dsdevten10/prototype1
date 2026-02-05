@@ -171,4 +171,19 @@ SICUREZZA INVIO DATI
 a. usiamo serverless function .env non vogliamo una fuga di dati 
 b. aggiungiamo su Form Submission un aggiunta di optional validatio 
 
+## as dev I want to ... send pdf to blob storage ... creating url ... receiving back the url .... 
+... then pass the url to the form ... send metada + pdf url into the cosmoDB to create the file 
+a. moved the uploadPDF.tsx from home to Submission father data page
+b. passo tramite props da uploadpdf salta al padre SubmissionData page che contiener component UploadPdf e SubmissionForm , e passo tramite props pdf e name a submissionFormDatacomponetn 
+
+## ERROR SOLVED 
+- non mi permetteva di creare item >> soluzione perche i SAS token erano scaduti >> ho riaggiornato i SAS del blob storage per dare la possibilita di accedere nuovamente al blob storage dall esterno 
+
+
+## da dire a piotr ==========================
+- credo che sia fondamentale avere l accesso al cosmoDB , questo perche quasi tutti gli errori e le soluzioni che ho trovato sono state determinate dalla soluzione direttamete dal lato serverless di azure 
+
+Hai separato le responsabilità: un componente carica, il genitore coordina, e il form salva. Il risultato è un database coerente dove ogni documento ha il suo link associato.
+
+## =====================================================================================================================
 
