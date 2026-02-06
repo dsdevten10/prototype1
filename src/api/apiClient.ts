@@ -39,11 +39,6 @@ export const fetchDocumentByTitle = async (title: string) => {
   const { resources } = await container.items
     .query(querySpec)
     .fetchAll();
-
-//  console.log("Documenti trovati per title", items);
-
-  // return array di risultati , potrebbe essere vuoto , ma ovviamente non lo sara
-  console.log('cosa rende qua ', resources)
   return resources;
 };
 
@@ -54,3 +49,18 @@ export const fetchDocumentByTitle = async (title: string) => {
 // la query voglio che ci sia un filtro in base items.version
 
 //Items.filterbyversion.sort((n1, n2)=| n1 -n2); 
+
+
+//============================================================================================================
+// QUERY asking cosmoSB file hardCoded di esempio >> voglio modificare con una query Piotr indicazioni 
+
+export const fetchingJSONOldFormat = async () =>{
+  const container = await getContainer(); 
+  const {resources: items} = await container.items.readAll().fetchAll(); 
+  console.log(items)
+  return items; 
+}
+
+// ===========================================================================================
+
+

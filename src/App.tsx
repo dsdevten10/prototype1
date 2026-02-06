@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Documents from "./pages/Documents";
 import SubmissionDataPage from "./pages/SubmissionDataPage";
+import NewMigrationPage from "./pages/NewMigrationPage"; 
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/Documents" element={<Documents/>}/>
         <Route path="/SubmissionData" element={<SubmissionDataPage/>}/>
+        <Route path="/NewMigrationPage" element={<NewMigrationPage/>}/>
       </Routes>
     </>
   );

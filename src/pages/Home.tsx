@@ -12,6 +12,9 @@ export default function Home() {
      <Link to='/SubmissionData'>
       <h1 className="border-2 rounded-sm mb-10 text-red-600">Sumission Data Page</h1>
       </Link>
+     <Link to='/NewMigrationPage'>
+      <h1 className="border-2 rounded-sm mb-10 text-green-600">New Migration Page</h1>
+      </Link>
     </div>
   );
 }

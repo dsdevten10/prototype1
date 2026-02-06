@@ -1,4 +1,6 @@
 // SET UP CONNESSIONE 
+// MODEL IL DATO STRUTTURA DATI E (COMUNICAZIONE CON DATABASE)
+// IN QUESTO CASO (ACCESSO AL DATO ) mentre types.ts sara la definizione dei dati 
 
 import { Container, CosmosClient } from "@azure/cosmos";
 
@@ -31,6 +33,15 @@ export const createItem = async (item: FormData & { id: string }) => {
 
 export default client; 
 
+/**
+ * Funzione UPSERT: Il cuore della migrazione.
+ * Se l'ID esiste già nel container, sovrascrive l'intero documento.
+ * Se l'ID non esiste, lo crea da zero.
+ */
 
-// dentro il container troviamo una serie di cose 
-// 
+export const upsertItem = async (newItem: any) => {
+    const container = await getContainer();
+    // Eseguiamo l'operazione atomica su Cosmos DB
+    const { resource } = await container.items.upsert(newItem);
+    return resource;
+    };

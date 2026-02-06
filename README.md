@@ -187,3 +187,13 @@ Hai separato le responsabilità: un componente carica, il genitore coordina, e i
 
 ## =====================================================================================================================
 
+## AS A DEV I WANT TO .... create a function which change the structure of the JSON file in a new format way ...to benefit the DB order 
+
+1. creating the mapper: function which insert old datas to the new format datas 
+- Model cosmoDBconfiguration - file che mi permette di parlare con il database 
+- Control: transformToNewSchema.ts prende i dati e con la logica li converte in quello che vogliamo poi in un nuovo formatto 
+- VIEW: MigratioTool.tsx  e l interfaccia di comando la dashboard che user
+
+2. transformation old schema in the new schema 
+
+

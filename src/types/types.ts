@@ -1,6 +1,8 @@
 // non mescolare i tipi con la logica
 //
 // devo creare anche url >> come puoi vedere url l avevo gia creato quindi riesco a tipizzarlo in questo file 
+// MODEL 
+// non e la connessione al database ma la definizione dei dati che andiamo a ricevere 
 
 export interface DocumentMetadata {
   title: string;
